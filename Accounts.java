@@ -13,10 +13,13 @@ public class Accounts {
         this.Balance = Balance;
     }
 
-    public void CheckBalance() {
-        System.out.println("==========================================");
+    public void CheckBalance(Scanner scanner) {
+        System.out.println("\n==========================================");
         System.out.printf("         ACCOUNT BALANCE: %.2f        \n", Balance);
         System.out.println("==========================================");
+
+        System.out.print("\nPRESS [ENTER] TO CONTINUE ");
+        scanner.nextLine();
     }
 
     public void Withdraw(Scanner scanner) {
@@ -43,11 +46,18 @@ public class Accounts {
             else if (Withdraw % 100 != 0) System.out.println("\nWITHDRAWAL AMOUNT SHOULD BE A MULTIPLE OF 100\n");
             else {
                 Balance -= Withdraw;
-                System.out.println("\nWITHDRAWAL SUCCESSFUL\n");
+                System.out.println("WITHDRAWAL SUCCESSFUL\n");
+
+                // RECEIPT
                 break;
             }
             
         } while (true);
 
+    }
+
+    public void Deposit(Scanner scanner) {
+
+        // DEPOSIT SECTION
     }
 }
