@@ -7,25 +7,23 @@ public class ATMv2 {
         
         Accounts[] account = {
             new Accounts("1001", "RUDOLF VICTORIA", "1234", 5000),
-            new Accounts("1002", "JOHN LLYOD CRUZ", "1444", 6000),
+            new Accounts("1002", "MICHAEL TAN", "1444", 6000),
             new Accounts("1003", "CRIS ANDREW", "1543", 7000),
             new Accounts("1004", "OWEN DAVID", "1236", 8000),
-            new Accounts("1005", "ANDREW SAM", "2468", 9000)
+            new Accounts("1005", "ANDREW BERTUD", "2468", 9000)
         };
 
-        boolean Logout = false;
 
-        while (!Logout) {
+        while (true) {
 
             boolean isRunning = true;
             boolean VerificationComplete = false;
-            Logout = false;
             int index = 0;
             int choice = 0;
 
-            System.out.println("==========================================");
-            System.out.println("              --- LOG IN ---              ");
-            System.out.println("==========================================\n");
+            System.out.println("╬═════════════════════════════════════════╬");
+            System.out.println("║             ═══ LOG IN ═══              ║");
+            System.out.println("╬═════════════════════════════════════════╬\n");
 
             do {
 
@@ -34,7 +32,7 @@ public class ATMv2 {
                 VerificationComplete = false;
                 isRunning = true;
 
-                System.out.print("ENTER ACCOUNT NUMBER (0 TO EXIT): ");
+                System.out.print("ENTER ACCOUNT NUMBER [OR 0 TO EXIT]:\n>> ");
                 String ID = scanner.nextLine().trim();
 
                 if (ID.isEmpty()) System.out.println("\nPLEASE PROVIDE YOUR ACCOUNT NUMBER\n");
@@ -51,12 +49,15 @@ public class ATMv2 {
 
                     if (isFound) {
 
-                        System.out.println("\n==========================================");
-                        System.out.printf("   --- WELCOME BACK, %s --- \n", account[index].Name);
-                        System.out.println("==========================================\n");
+                        System.out.println("\n╬═════════════════════════════════════════╬");
+                        System.out.println("║              WELCOME BACK!              ║");
+                        System.out.println("╬═════════════════════════════════════════╬\n");
 
+                        System.out.println("═══════════════════════════════════════════\n");
+                        
+                        System.out.println("   ACCOUNT VERIFIED: " + account[index].Name + "\n\n");
                         do {
-                            System.out.print("ENTER PIN (0 TO EXIT): ");
+                            System.out.print("ENTER PIN [0 TO EXIT]:\n>> ");
                             String PIN = scanner.nextLine().trim();
 
                             if (PIN.isEmpty()) System.out.println("\nPLEASE PROVIDE YOUR ACCOUNT PIN\n");
@@ -80,6 +81,7 @@ public class ATMv2 {
                                 if (PIN.equals(account[index].PIN)) {
                                     isRunning = false;
                                     VerificationComplete = true;
+                                    account[index].Loading();
                                     break;
                                 }
                                 else {
@@ -113,10 +115,9 @@ public class ATMv2 {
 
                     if (choice == 1) account[index].CheckBalance(scanner);
                     else if (choice == 2) account[index].Withdraw(scanner);
-                    else if (choice == 3);
+                    else if (choice == 3) account[index].Deposit(scanner);
                     else {
-                        System.out.println("\n[PROGRAM TERMINATED]\n");
-                        Logout = true;
+                        System.out.println("\n");
                         break;
                     }
                 }
@@ -124,7 +125,7 @@ public class ATMv2 {
                 
             }
             else {
-                System.out.println("\nPROGRAM TERMINATED\n");
+                System.out.println("\n[PROGRAM TERMINATED]\n");
                 break;
             }
         }
@@ -135,29 +136,31 @@ public class ATMv2 {
 
         int choice = 0;
 
-        System.out.println("\n==========================================");
-        System.out.println("                --- ATM ---                ");
-        System.out.println("==========================================\n");
-
-        System.out.println("   [1] CHECK BALANCE      [3] DEPOSIT\n");
-        System.out.println("   [2] WITHDRAW           [4] LOG OUT\n\n");
+        System.out.println("\n╬═════════════════════════════════════════╬");
+        System.out.println("║               ═══ ATM ═══               ║");
+        System.out.println("╬═════════════════════════════════════════╬");
+        System.out.println("║                                         ║");
+        System.out.println("║   [1] CHECK BALANCE      [3] DEPOSIT    ║");
+        System.out.println("║                                         ║");
+        System.out.println("║   [2] WITHDRAW           [4] LOG OUT    ║");
+        System.out.println("║                                         ║");
+        System.out.println("╬═════════════════════════════════════════╬\n\n");
 
         do {
             try {
-                System.out.print("ENTER CHOICE (1-4): ");
+                System.out.print("ENTER CHOICE [1-4]:\n>> ");
                 String input = scanner.nextLine();
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("\nINVALID INPUT\nPLEASE TRY AGAIN\n\n");
                 continue;
             }
-            if (choice > 4 || choice < 1) System.out.print("\nINVALID OPTION\nPLEASE TRY AGAIN\n");
+            if (choice > 4 || choice < 1) System.out.print("\nINVALID OPTION\nPLEASE TRY AGAIN\n\n");
             else break;  
             
         } while (true);
         
         return choice;
     }
-
 
 }
