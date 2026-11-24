@@ -81,7 +81,7 @@ public class ATMv2 {
                                 if (PIN.equals(account[index].PIN)) {
                                     isRunning = false;
                                     VerificationComplete = true;
-                                    account[index].Loading();
+                                    Accounts.Loading();
                                     break;
                                 }
                                 else {
@@ -149,7 +149,7 @@ public class ATMv2 {
         do {
             try {
                 System.out.print("ENTER CHOICE [1-4]:\n>> ");
-                String input = scanner.nextLine();
+                String input = scanner.nextLine().trim();
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("\nINVALID INPUT\nPLEASE TRY AGAIN\n\n");

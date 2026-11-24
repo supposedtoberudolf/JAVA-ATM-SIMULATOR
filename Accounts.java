@@ -45,7 +45,7 @@ public class Accounts {
                 continue;
             }
             if (Withdraw == 0) break;
-            else if (Withdraw < 0) System.out.println("\nWITHDRAWAL AMOUNT SHOULD NOT BE 0 BELOW\n");
+            else if (Withdraw < 0) System.out.println("\nWITHDRAWAL AMOUNT CANNOT BE NEGATIVE\n");
             else if (Withdraw > Balance) System.out.println("\nINSUFFICIENT BALANCE\n");
             else if (Withdraw % 100 != 0) System.out.println("\nWITHDRAWAL AMOUNT SHOULD BE A MULTIPLE OF 100\n");
             else {
@@ -92,7 +92,7 @@ public class Accounts {
                 continue;
             }
             if (Deposit == 0) break;
-            else if (Deposit < 0) System.out.println("\nDEPOSIT AMOUNT SHOULD NOT BE 0 BELOW\n");
+            else if (Deposit < 0) System.out.println("\nDEPOSIT AMOUNT CANNOT BE NEGATIVE\n");
             else if (Deposit > 500000) System.out.println("\nMAX DEPOSIT IS ONLY PHP 500,000\nPLEASE TRY AGAIN\n");
             else if (Deposit % 100 != 0) System.out.println("\nDEPOSIT AMOUNT SHOULD BE A MULTIPLE OF 100\n");
             else {
@@ -120,7 +120,7 @@ public class Accounts {
         
     }
 
-    public void Loading() {
+    public static void Loading() {
 
         int totalBars = 20; 
     
